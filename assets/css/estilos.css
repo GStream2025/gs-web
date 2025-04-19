@@ -166,8 +166,13 @@ body {
   padding: 2em;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  animation: fadeInUp 0.7s ease forwards;
   position: relative;
+}
+
+.info-extra.activa {
+  display: block;
+  animation: fadeInUp 0.7s ease forwards;
+  opacity: 1;
 }
 
 .info-extra p {

@@ -96,22 +96,35 @@ document.addEventListener("DOMContentLoaded", () => {
     fondoAnimado.appendChild(capa);
   }
 
-  // 🔔 NOTIFICACIÓN FLOTANTE MEJORADA
-  const noti = document.querySelector(".notificacion-flotante");
-  if (noti) {
+  // 🔔 NOTIFICACIÓN FLOTANTE – "Sorteo cada 100 seguidores"
+  const noti = document.createElement("div");
+  noti.className = "notificacion-sorteo";
+  noti.textContent = "🎉 ¡Nuevo sorteo cada 100 seguidores!";
+  document.body.appendChild(noti);
+
+  setTimeout(() => {
+    noti.style.opacity = "1";
+    noti.style.transform = "translateY(0)";
+  }, 800);
+
+  setTimeout(() => {
     noti.style.opacity = "0";
-    noti.style.transform = "translateY(20px)";
-    noti.style.transition = "all 0.6s ease";
+    noti.style.transform = "translateY(-20px)";
+  }, 7000);
 
-    setTimeout(() => {
-      noti.style.opacity = "1";
-      noti.style.transform = "translateY(0)";
-    }, 1000); // Aparece luego de 1 segundo
+  // 💬 ÍCONO DE WHATSAPP flotante
+  const whatsapp = document.createElement("a");
+  whatsapp.href = "https://wa.me/59893589404";
+  whatsapp.className = "whatsapp-float";
+  whatsapp.target = "_blank";
+  whatsapp.rel = "noopener noreferrer";
 
-    // Se esconde automáticamente a los 7 segundos
-    setTimeout(() => {
-      noti.style.opacity = "0";
-      noti.style.transform = "translateY(20px)";
-    }, 8000);
-  }
+  const icono = document.createElement("img");
+  icono.src = "assets/img/whatsapp_icono.png";
+  icono.alt = "WhatsApp";
+  icono.style.width = "60px";
+  icono.style.height = "60px";
+
+  whatsapp.appendChild(icono);
+  document.body.appendChild(whatsapp);
 });
