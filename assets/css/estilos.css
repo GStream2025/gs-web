@@ -1,117 +1,326 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const menuBtn = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  if (menuBtn && nav) {
-    menuBtn.addEventListener("click", () => {
-      nav.classList.toggle("activo");
-    });
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9f9ff;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+.modo-oscuro {
+  background: #1c1c2b;
+  color: #f1f1f1;
+}
+
+/* Línea decorativa */
+.linea-superior {
+  height: 6px;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+}
+
+/* Header */
+.header {
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #6c5ce7;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
   }
 
-  const elementosAnimados = document.querySelectorAll(".animado");
-  const mostrarElemento = () => {
-    const scrollTop = window.pageYOffset;
-    elementosAnimados.forEach(el => {
-      const offsetTop = el.offsetTop;
-      if (scrollTop > offsetTop - window.innerHeight + 100) {
-        el.classList.add("visible");
-      }
-    });
-  };
-
-  mostrarElemento();
-  window.addEventListener("scroll", mostrarElemento);
-
-  const mostrarInfoBtn = document.getElementById("mostrarInfoBtn");
-  const infoExtra = document.getElementById("infoExtra");
-
-  if (mostrarInfoBtn && infoExtra) {
-    mostrarInfoBtn.addEventListener("click", () => {
-      const visible = infoExtra.style.display === "block";
-      if (!visible) {
-        infoExtra.style.display = "block";
-        infoExtra.style.animation = "fadeInUp 0.7s ease forwards";
-        infoExtra.style.opacity = "1";
-      } else {
-        infoExtra.style.animation = "fadeOutDown 0.5s ease forwards";
-        setTimeout(() => {
-          infoExtra.style.display = "none";
-        }, 400);
-      }
-    });
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 10px 0;
   }
 
-  const botonFaq = document.getElementById("botonFaq");
-  const faqContainer = document.getElementById("faqContainer");
-
-  if (botonFaq && faqContainer) {
-    botonFaq.addEventListener("click", () => {
-      faqContainer.classList.toggle("activo");
-    });
+  .nav.activo .nav-links {
+    display: flex;
   }
+}
 
-  const preguntas = document.querySelectorAll(".pregunta");
-  preguntas.forEach(pregunta => {
-    pregunta.addEventListener("click", () => {
-      const respuesta = pregunta.nextElementSibling;
-      if (respuesta) {
-        respuesta.classList.toggle("visible");
-      }
-    });
-  });
+/* Hero */
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  color: #fff;
+}
 
-  const toggleThemeBtn = document.getElementById("toggleTheme");
-  const body = document.body;
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
 
-  if (localStorage.getItem("modo") === "oscuro") {
-    body.classList.add("modo-oscuro");
+.hero span {
+  color: #ffeaa7;
+}
+
+.boton-principal {
+  background: #fff;
+  color: #6c5ce7;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.boton-principal:hover {
+  background: #dfe6e9;
+}
+
+/* Formulario + Logo */
+.contacto {
+  padding: 40px 20px;
+}
+
+.formulario-logo-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-contacto-grande img {
+  width: 120px;
+}
+
+.formulario-contacto {
+  max-width: 400px;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.boton-secundario {
+  background: #6c5ce7;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.boton-secundario:hover {
+  background: #5e54c7;
+}
+
+/* Contame más */
+.info-extra {
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  text-align: center;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.6s ease;
+}
+
+.info-extra.mostrar {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.icono-info {
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  background: #6c5ce7;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+}
+
+/* FAQ */
+.faq-chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.faq-chatbot button {
+  background: #6c5ce7;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.faq-container {
+  display: none;
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 300px;
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.faq-container.activo {
+  display: block;
+}
+
+.faq-list .pregunta {
+  background: none;
+  border: none;
+  color: #6c5ce7;
+  text-align: left;
+  font-weight: bold;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.faq-list .respuesta {
+  display: none;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.faq-list .respuesta.visible {
+  display: block;
+}
+
+/* Botón modo oscuro */
+.modo-oscuro-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  font-size: 20px;
+  padding: 12px;
+  background: #6c5ce7;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* WhatsApp flotante */
+.whatsapp-float {
+  position: fixed;
+  bottom: 150px;
+  right: 20px;
+  z-index: 999;
+}
+
+.whatsapp-float img {
+  width: 60px;
+  height: 60px;
+}
+
+/* Notificación flotante */
+.notificacion-sorteo {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #00b894;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.6s ease;
+  z-index: 1000;
+}
+
+/* Fondo animado */
+.fondo-animado {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.fondo-animado .capa {
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  background: radial-gradient(circle, rgba(108,92,231,0.15) 0%, transparent 70%);
+  animation: mover 12s linear infinite;
+}
+
+@keyframes mover {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-
-  if (toggleThemeBtn) {
-    toggleThemeBtn.addEventListener("click", () => {
-      body.classList.toggle("modo-oscuro");
-      localStorage.setItem("modo", body.classList.contains("modo-oscuro") ? "oscuro" : "claro");
-    });
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
-
-  const fondoAnimado = document.createElement("div");
-  fondoAnimado.className = "fondo-animado";
-  document.body.prepend(fondoAnimado);
-
-  for (let i = 0; i < 12; i++) {
-    const capa = document.createElement("div");
-    capa.className = "capa";
-    capa.style.animationDelay = `${i * 1.5}s`;
-    fondoAnimado.appendChild(capa);
-  }
-
-  const noti = document.createElement("div");
-  noti.className = "notificacion-sorteo";
-  noti.textContent = "🎉 ¡Nuevo sorteo cada 100 seguidores!";
-  document.body.appendChild(noti);
-
-  setTimeout(() => {
-    noti.style.opacity = "1";
-    noti.style.transform = "translateY(0)";
-  }, 800);
-
-  setTimeout(() => {
-    noti.style.opacity = "0";
-    noti.style.transform = "translateY(-20px)";
-  }, 7000);
-
-  const whatsapp = document.createElement("a");
-  whatsapp.href = "https://wa.me/59893589404";
-  whatsapp.className = "whatsapp-float";
-  whatsapp.target = "_blank";
-  whatsapp.rel = "noopener noreferrer";
-
-  const icono = document.createElement("img");
-  icono.src = "assets/img/whatsapp_icono.png";
-  icono.alt = "WhatsApp";
-  icono.style.width = "60px";
-  icono.style.height = "60px";
-
-  whatsapp.appendChild(icono);
-  document.body.appendChild(whatsapp);
-});
+}
