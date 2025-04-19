@@ -1,122 +1,117 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GStream 2025 - Página Principal</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
-  <link rel="stylesheet" href="styles.css"> <!-- Tu CSS externo -->
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
 
-  <div class="linea-superior"></div>
+  if (menuBtn && nav) {
+    menuBtn.addEventListener("click", () => {
+      nav.classList.toggle("activo");
+    });
+  }
 
-  <!-- NAV -->
-  <nav class="nav">
-    <h1>GStream</h1>
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#idea">Tu Idea</a></li>
-      <li><a href="#resenas">Reseñas</a></li>
-    </ul>
-  </nav>
+  const elementosAnimados = document.querySelectorAll(".animado");
+  const mostrarElemento = () => {
+    const scrollTop = window.pageYOffset;
+    elementosAnimados.forEach(el => {
+      const offsetTop = el.offsetTop;
+      if (scrollTop > offsetTop - window.innerHeight + 100) {
+        el.classList.add("visible");
+      }
+    });
+  };
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <h1>Llevamos tu <span>idea</span> al siguiente nivel 🚀</h1>
-    <a href="#idea" class="boton-principal">Contame tu idea</a>
-  </section>
+  mostrarElemento();
+  window.addEventListener("scroll", mostrarElemento);
 
-  <!-- SECCIÓN DE IDEA -->
-  <section class="contacto" id="idea">
-    <div class="formulario-logo-wrapper">
-      <div class="formulario-contacto">
-        <h2>Contame tu idea ✨</h2>
-        <form action="https://formsubmit.co/tu-email@example.com" method="POST">
-          <input type="text" name="nombre" placeholder="Tu nombre" required>
-          <input type="text" name="instagram" placeholder="@tuusuario" required>
-          <textarea name="mensaje" rows="4" placeholder="¿Qué idea tenés en mente?" required></textarea>
-          <button class="boton-principal" type="submit">Enviar</button>
-        </form>
-      </div>
-      <div class="logo-contacto-grande">
-        <img src="https://gstream2025.github.io/gs-web/logo.png" alt="Logo GStream">
-      </div>
-    </div>
-  </section>
+  const mostrarInfoBtn = document.getElementById("mostrarInfoBtn");
+  const infoExtra = document.getElementById("infoExtra");
 
-  <!-- SECCIÓN SABER MÁS -->
-  <section class="seccion-saber-mas">
-    <button class="boton-secundario" onclick="toggleInfo()">¿Querés saber más?</button>
-    <div class="info-extra" id="infoExtra">
-      <div class="icono-info">💡</div>
-      <p>En GStream te ayudamos a transformar tus ideas en proyectos reales, desde la conceptualización hasta la implementación. ¡Animate a dar el primer paso!</p>
-      <p class="firma-info">- El equipo de GStream</p>
-    </div>
-  </section>
+  if (mostrarInfoBtn && infoExtra) {
+    mostrarInfoBtn.addEventListener("click", () => {
+      const visible = infoExtra.style.display === "block";
+      if (!visible) {
+        infoExtra.style.display = "block";
+        infoExtra.style.animation = "fadeInUp 0.7s ease forwards";
+        infoExtra.style.opacity = "1";
+      } else {
+        infoExtra.style.animation = "fadeOutDown 0.5s ease forwards";
+        setTimeout(() => {
+          infoExtra.style.display = "none";
+        }, 400);
+      }
+    });
+  }
 
-  <!-- SECCIÓN RESEÑAS -->
-  <section class="resenas" id="resenas">
-    <h2>Lo que dicen quienes ya confiaron ❤️</h2>
-    <div id="resenas-container">
-      <div class="resena">⭐️⭐️⭐️⭐️⭐️ "¡Me ayudaron a lanzar mi app desde cero!"</div>
-      <div class="resena">⭐️⭐️⭐️⭐️⭐️ "Atención increíble y trabajo profesional."</div>
-      <div class="resena">⭐️⭐️⭐️⭐️⭐️ "Rápido, moderno y entendieron mi idea al 100%."</div>
-    </div>
-  </section>
+  const botonFaq = document.getElementById("botonFaq");
+  const faqContainer = document.getElementById("faqContainer");
 
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2025 GStream. Todos los derechos reservados.
-  </footer>
+  if (botonFaq && faqContainer) {
+    botonFaq.addEventListener("click", () => {
+      faqContainer.classList.toggle("activo");
+    });
+  }
 
-  <!-- BOTÓN WHATSAPP -->
-  <a href="https://wa.me/5491112345678" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-    <img src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=ffffff" alt="WhatsApp">
-  </a>
+  const preguntas = document.querySelectorAll(".pregunta");
+  preguntas.forEach(pregunta => {
+    pregunta.addEventListener("click", () => {
+      const respuesta = pregunta.nextElementSibling;
+      if (respuesta) {
+        respuesta.classList.toggle("visible");
+      }
+    });
+  });
 
-  <!-- BOTÓN FLOTANTE DE SORTEO -->
-  <a href="sorteo.html" class="boton-sorteo">🎁 Sorteo Activo</a>
+  const toggleThemeBtn = document.getElementById("toggleTheme");
+  const body = document.body;
 
-  <!-- BOTÓN FLOTANTE DE NOTIFICACIÓN -->
-  <a href="#resenas" class="boton-noti">¡Cada 100 seguidores hay sorteos!</a>
+  if (localStorage.getItem("modo") === "oscuro") {
+    body.classList.add("modo-oscuro");
+  }
 
-  <!-- BOTÓN DE MODO OSCURO -->
-  <button class="modo-oscuro-btn" onclick="toggleModoOscuro()">🌓</button>
+  if (toggleThemeBtn) {
+    toggleThemeBtn.addEventListener("click", () => {
+      body.classList.toggle("modo-oscuro");
+      localStorage.setItem("modo", body.classList.contains("modo-oscuro") ? "oscuro" : "claro");
+    });
+  }
 
-  <!-- FAQ CHATBOT -->
-  <div class="faq-chatbot">
-    <button id="botonFaq" onclick="toggleFaq()">❓</button>
-    <div class="faq-container" id="faqContainer">
-      <h3>Preguntas Frecuentes</h3>
-      <button class="pregunta" onclick="toggleRespuesta(this)">¿Cómo participo del sorteo?</button>
-      <div class="respuesta">Solo tenés que seguirnos, mencionar amigos y subir tu captura.</div>
-      <button class="pregunta" onclick="toggleRespuesta(this)">¿Puedo enviar más de una idea?</button>
-      <div class="respuesta">¡Sí! Siempre que sean distintas y originales.</div>
-    </div>
-  </div>
+  const fondoAnimado = document.createElement("div");
+  fondoAnimado.className = "fondo-animado";
+  document.body.prepend(fondoAnimado);
 
-  <!-- JS -->
-  <script>
-    function toggleInfo() {
-      const info = document.getElementById('infoExtra');
-      info.classList.toggle('activa');
-    }
+  for (let i = 0; i < 12; i++) {
+    const capa = document.createElement("div");
+    capa.className = "capa";
+    capa.style.animationDelay = `${i * 1.5}s`;
+    fondoAnimado.appendChild(capa);
+  }
 
-    function toggleModoOscuro() {
-      document.body.classList.toggle('modo-oscuro');
-    }
+  const noti = document.createElement("div");
+  noti.className = "notificacion-sorteo";
+  noti.textContent = "🎉 ¡Nuevo sorteo cada 100 seguidores!";
+  document.body.appendChild(noti);
 
-    function toggleFaq() {
-      const faq = document.getElementById('faqContainer');
-      faq.classList.toggle('activo');
-    }
+  setTimeout(() => {
+    noti.style.opacity = "1";
+    noti.style.transform = "translateY(0)";
+  }, 800);
 
-    function toggleRespuesta(button) {
-      const respuesta = button.nextElementSibling;
-      respuesta.classList.toggle('visible');
-    }
-  </script>
+  setTimeout(() => {
+    noti.style.opacity = "0";
+    noti.style.transform = "translateY(-20px)";
+  }, 7000);
 
-</body>
-</html>
+  const whatsapp = document.createElement("a");
+  whatsapp.href = "https://wa.me/59893589404";
+  whatsapp.className = "whatsapp-float";
+  whatsapp.target = "_blank";
+  whatsapp.rel = "noopener noreferrer";
+
+  const icono = document.createElement("img");
+  icono.src = "assets/img/whatsapp_icono.png";
+  icono.alt = "WhatsApp";
+  icono.style.width = "60px";
+  icono.style.height = "60px";
+
+  whatsapp.appendChild(icono);
+  document.body.appendChild(whatsapp);
+});
