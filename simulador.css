@@ -1,0 +1,137 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #f1f4f9;
+  color: #333;
+}
+
+.header {
+  background-color: #151515;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 42px;
+}
+
+.nav-buttons a {
+  color: #fff;
+  margin-left: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-buttons a:hover,
+.nav-buttons .active {
+  color: #00ccff;
+}
+
+.simulador-container {
+  max-width: 850px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.simulador-container h1 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #222;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label,
+legend {
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  padding: 12px 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #00aaff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.1);
+}
+
+fieldset {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+fieldset label {
+  display: block;
+  margin: 8px 0;
+}
+
+.resultado {
+  background-color: #e9fff0;
+  border-left: 5px solid #2ecc71;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 25px;
+  text-align: center;
+  color: #27ae60;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .simulador-container {
+    padding: 25px;
+  }
+
+  button {
+    width: 100%;
+  }
+}

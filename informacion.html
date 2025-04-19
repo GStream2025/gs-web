@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GStream</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo-nav">
+      <img src="assets/img/logo.png" alt="Logo GStream" class="logo">
+      <span class="creador">Creador y diseñador: Gabriel Spinelli</span>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+      <li><a href="simulador.html">Simulador</a></li>
+      <li><a href="informacion.html">Información</a></li>
+      <li><a href="precios.html">Precios</a></li>
+    </ul>
+  </nav>
+
+  <main style="padding: 2rem; text-align: center;">
+    <h1>Informacion</h1>
+    <p>Contenido para Informacion...</p>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="anio-footer"></span> GStream. Todos los derechos reservados.</p>
+    <small class="creditos">🌟 Página diseñada por Gabriel Spinelli</small>
+  </footer>
+
+  <script>
+    document.getElementById('anio-footer').textContent = new Date().getFullYear();
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      document.getElementById("nav-links").classList.toggle("activo");
+    });
+  </script>
+</body>
+</html>

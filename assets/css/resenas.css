@@ -1,0 +1,169 @@
+.resena {
+  position: relative;
+  background-color: #fff9c4;
+  border-radius: 8px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+  transform: rotate(-1.5deg);
+  transition: transform 0.2s ease;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.resena:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.resena img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.resena p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.resena span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* CLIP DIGITAL VISUAL (simulado con CSS) */
+.nota-con-clip {
+  position: relative;
+}
+
+.clip-digital {
+  width: 40px;
+  height: 20px;
+  background: #ccc;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.nota-resena {
+  background-color: #fffde7;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  max-width: 250px;
+  display: inline-block;
+  transform: rotate(-1deg);
+  position: relative;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.nota-resena {
+  position: relative;
+  background-color: #fff8e1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 260px;
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.nota-resena:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* CLIP VISUAL EN CÓDIGO */
+.clip-visual {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #888;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.clip-visual::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+}
+
+/* Avatar del autor */
+.autor {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.autor .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* =========================== */
+/*     MODO OSCURO SUPPORT     */
+/* =========================== */
+body.modo-oscuro .resena,
+body.modo-oscuro .nota-resena {
+  background-color: #2c2c2c;
+  border-color: #444;
+  color: #f1f1f1;
+}
+
+body.modo-oscuro .resena p,
+body.modo-oscuro .nota-resena p,
+body.modo-oscuro .resena span,
+body.modo-oscuro .nota-resena span,
+body.modo-oscuro .autor {
+  color: #f1f1f1;
+}
+
+body.modo-oscuro .clip-visual {
+  background-color: #444;
+  border-color: #aaa;
+}
+
+body.modo-oscuro .clip-visual::after {
+  border-color: #ccc;
+}
+
+body.modo-oscuro .autor {
+  color: #f9f9f9;
+}

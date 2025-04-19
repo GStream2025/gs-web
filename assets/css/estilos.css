@@ -1,0 +1,492 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #f8fbff, #e9f0f7); /* fondo elegante */
+  color: #222;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* LINEA SUPERIOR */
+.linea-superior {
+  height: 4px;
+  background: linear-gradient(to right, #00cec9, #6c5ce7);
+}
+
+/* NAV */
+.nav {
+  background-color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  z-index: 999;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #00cec9;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #e3f2fd, #f9fafe);
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #2d3436;
+}
+
+.hero h1 span {
+  color: #00b894;
+  font-weight: 600;
+}
+
+.boton-principal,
+.boton-secundario {
+  margin-top: 20px;
+  background-color: #00b894;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+
+.boton-principal:hover,
+.boton-secundario:hover {
+  background-color: #019875;
+  box-shadow: 0 6px 16px rgba(0, 184, 148, 0.4);
+}
+
+/* CONTACTO */
+.contacto {
+  padding: 60px 20px;
+  background: #ffffff;
+}
+
+.formulario-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.formulario-contacto {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  width: 100%;
+}
+
+.formulario-contacto h2 {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.formulario-contacto form input,
+.formulario-contacto form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  resize: vertical;
+}
+
+/* LOGO */
+.logo-contacto-grande img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-contacto-grande img:hover {
+  transform: scale(1.05);
+}
+
+/* SABER MÁS */
+.seccion-saber-mas {
+  text-align: center;
+  padding: 3em 1em;
+  background-color: #f4f7fc;
+}
+
+.info-extra {
+  display: none;
+  opacity: 0;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  animation: fadeInUp 0.7s ease forwards;
+  position: relative;
+}
+
+.info-extra p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1em;
+  color: #444;
+}
+
+.firma-info {
+  font-weight: bold;
+  color: #5c33a3;
+  margin-top: 1em;
+}
+
+.icono-info {
+  margin-bottom: 1em;
+}
+
+/* WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 55px;
+  height: 55px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+}
+
+/* RESEÑAS */
+.resenas {
+  padding: 60px 20px;
+  background: #f0f4fa;
+  text-align: center;
+  color: #222;
+}
+
+.resenas h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+#resenas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* FAQ */
+.faq-chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+#botonFaq {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+#botonFaq:hover {
+  background-color: #5946d2;
+}
+
+.faq-container {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 280px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  padding: 15px;
+  display: none;
+  flex-direction: column;
+  animation: fadeInUp 0.3s ease;
+}
+
+.faq-container.activo {
+  display: flex;
+}
+
+.faq-container h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pregunta {
+  background-color: #f1f1f1;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.pregunta:hover {
+  background-color: #e0e0e0;
+}
+
+.respuesta {
+  display: none;
+  background-color: #fafafa;
+  padding: 8px;
+  border-left: 3px solid #6c5ce7;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #555;
+}
+
+.respuesta.visible {
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ANIMACIONES */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* MODO OSCURO */
+body.modo-oscuro {
+  background-color: #1e272e;
+  color: #f5f6fa;
+}
+
+body.modo-oscuro .hero {
+  background: #2f3640;
+}
+
+body.modo-oscuro .nav {
+  background-color: #2f3640;
+}
+
+body.modo-oscuro .nav ul li a {
+  color: #dcdde1;
+}
+
+body.modo-oscuro .nav ul li a:hover {
+  color: #70a1ff;
+}
+
+body.modo-oscuro .contacto,
+body.modo-oscuro .formulario-contacto {
+  background-color: #2f3640;
+  color: #f1f2f6;
+}
+
+body.modo-oscuro .resenas {
+  background-color: #353b48;
+  color: #f1f2f6;
+}
+
+body.modo-oscuro .faq-container {
+  background-color: #2f3640;
+  color: #f1f2f6;
+}
+
+body.modo-oscuro footer {
+  background-color: #1e272e;
+}
+
+body.modo-oscuro input,
+body.modo-oscuro textarea {
+  background-color: #3b3b3b;
+  color: #f5f6fa;
+  border: 1px solid #555;
+}
+
+/* BOTÓN MODO OSCURO */
+.modo-oscuro-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 52px;
+  height: 52px;
+  background-color: #333;
+  color: #fff;
+  font-size: 22px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+
+.modo-oscuro-btn:hover {
+  background-color: #555;
+}
+/* MEJORAS DE CONTRASTE EN MODO OSCURO */
+body.modo-oscuro {
+  background-color: #1e272e;
+  color: #f1f1f1;
+}
+
+body.modo-oscuro .hero {
+  background: #2f3640;
+}
+
+body.modo-oscuro .contacto,
+body.modo-oscuro .formulario-contacto,
+body.modo-oscuro .seccion-saber-mas,
+body.modo-oscuro .info-extra {
+  background-color: #2f3640;
+  color: #f1f1f1;
+}
+
+body.modo-oscuro .info-extra p {
+  color: #f1f1f1;
+}
+
+body.modo-oscuro input,
+body.modo-oscuro textarea {
+  background-color: #3a3a3a;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.modo-oscuro input::placeholder,
+body.modo-oscuro textarea::placeholder {
+  color: #aaa;
+}
+
+body.modo-oscuro .resenas {
+  background-color: #2d3436;
+  color: #f1f1f1;
+}
+
+body.modo-oscuro .faq-container {
+  background-color: #2f3640;
+  color: #f1f1f1;
+}
+
+body.modo-oscuro .pregunta {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+body.modo-oscuro .respuesta {
+  background-color: #444;
+  color: #fff;
+  border-left: 3px solid #6c5ce7;
+}
+
+body.modo-oscuro footer {
+  background-color: #1e272e;
+  color: #f1f1f1;
+}
+/* ...todo tu CSS anterior intacto... */
+
+/* BOTÓN FLOTANTE DE SORTEO */
+.boton-sorteo {
+  position: fixed;
+  bottom: 90px; /* encima del botón de WhatsApp */
+  right: 20px;
+  z-index: 1000;
+  background: linear-gradient(to right, #00cec9, #6c5ce7);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.boton-sorteo:hover {
+  background: linear-gradient(to right, #01a3a4, #5e50d6);
+  transform: translateY(-2px);
+}
+
+/* DARK MODE para botón de sorteo */
+body.modo-oscuro .boton-sorteo {
+  background: linear-gradient(to right, #0984e3, #6c5ce7);
+  color: white;
+}

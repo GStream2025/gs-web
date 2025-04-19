@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulador de Presupuesto - GStream</title>
+  <link rel="stylesheet" href="assets/css/simulador.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="contenedor-simulador">
+
+    <!-- Botón volver al inicio -->
+    <div class="boton-volver-wrapper">
+      <a href="index.html" class="boton-volver">← Volver al inicio</a>
+    </div>
+
+    <h1>Simulá tu presupuesto</h1>
+
+    <!-- Logo grande -->
+    <div class="logo-contacto-grande animado-logo">
+      <img src="assets/img/logo_gstream_pequeño.png" alt="Logo GStream Grande" />
+    </div>
+
+    <form id="formulario-simulador" action="https://formsubmit.co/gstream2319@gmail.com" method="POST">
+      
+      <label>¿Qué tipo de sitio necesitás?</label>
+      <select name="tipoSitio" id="tipoSitio" required>
+        <option value="" disabled selected>Elegí una opción</option>
+        <option value="Sitio institucional simple">Sitio institucional simple - $70</option>
+        <option value="Landing Page">Landing Page - $50</option>
+        <option value="Blog personal / profesional">Blog personal / profesional - $80</option>
+        <option value="Tienda online">Tienda online - $120</option>
+        <option value="Portfolio / CV online">Portfolio / CV online - $60</option>
+        <option value="Página de eventos / reservas">Página de eventos / reservas - $90</option>
+      </select>
+
+      <label>Funcionalidades extra:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="extras[]" value="Formulario de contacto"> Formulario de contacto - $10</label>
+        <label><input type="checkbox" name="extras[]" value="WhatsApp"> WhatsApp - $5</label>
+        <label><input type="checkbox" name="extras[]" value="Instagram"> Instagram - $10</label>
+        <label><input type="checkbox" name="extras[]" value="Galería de imágenes"> Galería - $15</label>
+        <label><input type="checkbox" name="extras[]" value="Login"> Login - $20</label>
+        <label><input type="checkbox" name="extras[]" value="Animaciones"> Animaciones - $10</label>
+      </div>
+
+      <label>Extras de marca:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="marca[]" value="Logo"> Logo - $20</label>
+        <label><input type="checkbox" name="marca[]" value="Paleta"> Paleta personalizada - $10</label>
+        <label><input type="checkbox" name="marca[]" value="Asesoramiento"> Asesoramiento - $10</label>
+      </div>
+
+      <div class="resultado">
+        <p>Total estimado: <span id="total">$0</span></p>
+      </div>
+
+      <!-- DATOS DE CONTACTO -->
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="correo" placeholder="Tu correo" required />
+      <input type="text" name="whatsapp" placeholder="Tu WhatsApp (opcional)" />
+
+      <!-- TOTAL -->
+      <input type="hidden" name="totalPresupuesto" id="inputTotal" />
+
+      <!-- REDIRECCIÓN -->
+      <input type="hidden" name="_next" value="https://gstream2025.github.io/gs-web/gracias.html">
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit" class="boton-enviar">Enviar presupuesto</button>
+    </form>
+  </div>
+
+  <script src="assets/js/simulador.js"></script>
+</body>
+</html>

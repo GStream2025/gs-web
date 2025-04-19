@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GStream - Desarrollo Web</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/estilos.css"/>
+  <link rel="stylesheet" href="assets/css/resenas.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Línea decorativa superior -->
+  <div class="linea-superior"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="simulador.html">Simulador</a></li>
+        <li><a href="nombres.html">Generador de Nombres</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Vos lo soñás,<br><span>nosotros lo creamos</span></h1>
+      <a href="simulador.html" class="boton-principal">Simulá tu presupuesto</a>
+      <a href="sorteos.html" class="boton-principal" style="margin-top: 10px; display: inline-block;">🎉 Participar del Sorteo</a>
+    </section>
+
+    <!-- FORMULARIO + LOGO -->
+    <section class="contacto">
+      <div class="formulario-logo-wrapper">
+        <div class="logo-contacto-grande">
+          <img src="assets/img/logo_gstream_pequeño.png" alt="Logo GStream Grande" />
+        </div>
+        <div class="formulario-contacto">
+          <h2>¡Contactanos ahora!</h2>
+          <form action="https://formsubmit.co/gstream2319@gmail.com" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+            <input type="email" name="correo" placeholder="Tu correo" required />
+            <input type="text" name="whatsapp" placeholder="Tu WhatsApp" />
+            <textarea name="mensaje" placeholder="Contanos tu idea..." required></textarea>
+
+            <input type="hidden" name="_next" value="https://gstream2025.github.io/gs-web/gracias.html">
+            <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit" class="boton-secundario">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN SABER MÁS -->
+    <section class="seccion-saber-mas">
+      <h2>¿Querés saber más de nosotros?</h2>
+      <button id="mostrarInfoBtn" class="boton-principal">Contame más</button>
+      <div class="info-extra" id="infoExtra" style="display: none; opacity: 0;">
+        <div class="icono-info">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#6c5ce7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8L21 10h-9l1-8z"></path>
+          </svg>
+        </div>
+        <p>
+          Nos dedicamos a materializar las ideas de nuestros clientes.  
+          No somos genios ni tenemos una lámpara mágica, pero sí creemos que cada idea merece ser realidad.  
+          Queremos que cualquiera pueda formar parte de este mundo digital, sin importar su experiencia previa.
+        </p>
+        <p class="firma-info">– El equipo de GStream</p>
+      </div>
+    </section>
+
+    <!-- RESEÑAS -->
+    <section class="resenas">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div id="resenas-container"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="anio-footer"></span> GStream. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- BOTÓN DE WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/59893589404" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <img src="assets/img/whatsapp_icono.png" alt="WhatsApp">
+  </a>
+
+  <!-- BOTÓN DE MODO OSCURO -->
+  <button id="toggleTheme" class="modo-oscuro-btn" title="Cambiar modo oscuro">🌓</button>
+
+  <!-- CHAT FAQ INTERACTIVO -->
+  <div class="faq-chatbot">
+    <button id="botonFaq">❓</button>
+    <div class="faq-container" id="faqContainer">
+      <h3>Preguntas Frecuentes</h3>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <button class="pregunta">¿Cuánto demora un sitio web?</button>
+          <div class="respuesta">Dependiendo del proyecto, entre 3 y 10 días.</div>
+        </li>
+        <li class="faq-item">
+          <button class="pregunta">¿Puedo pedir una tienda online?</button>
+          <div class="respuesta">Sí, hacemos tiendas con carrito y pasarela de pago.</div>
+        </li>
+        <li class="faq-item">
+          <button class="pregunta">¿Aceptan pagos internacionales?</button>
+          <div class="respuesta">Sí, trabajamos con PayPal, MercadoPago, y transferencias.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/resenas.js"></script>
+  <script src="assets/js/logo.js"></script>
+</body>
+</html>
