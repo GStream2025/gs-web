@@ -198,7 +198,7 @@
 
     let contadorActual = 0;
 
-    // Animación del contador
+    // Animar contador
     function animarContador(desde, hasta) {
       const duracion = 600;
       const start = performance.now();
@@ -219,7 +219,6 @@
       contadorActual = nuevoValor;
     });
 
-    // Lista de participantes
     onValue(participantesRef, snapshot => {
       const data = snapshot.val();
       lista.innerHTML = "";
