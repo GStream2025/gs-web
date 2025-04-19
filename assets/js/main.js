@@ -95,4 +95,23 @@ document.addEventListener("DOMContentLoaded", () => {
     capa.style.animationDelay = `${i * 1.5}s`;
     fondoAnimado.appendChild(capa);
   }
+
+  // 🔔 NOTIFICACIÓN FLOTANTE MEJORADA
+  const noti = document.querySelector(".notificacion-flotante");
+  if (noti) {
+    noti.style.opacity = "0";
+    noti.style.transform = "translateY(20px)";
+    noti.style.transition = "all 0.6s ease";
+
+    setTimeout(() => {
+      noti.style.opacity = "1";
+      noti.style.transform = "translateY(0)";
+    }, 1000); // Aparece luego de 1 segundo
+
+    // Se esconde automáticamente a los 7 segundos
+    setTimeout(() => {
+      noti.style.opacity = "0";
+      noti.style.transform = "translateY(20px)";
+    }, 8000);
+  }
 });
