@@ -1,91 +1,156 @@
-<!-- ... todo tu código anterior sin cambios ... -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GStream - Desarrollo Web</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/estilos.css"/>
+  <link rel="stylesheet" href="assets/css/resenas.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Animación para mostrar la sección extra */
+    .info-extra {
+      transition: opacity 0.6s ease;
+    }
+    .info-extra.mostrar {
+      display: block !important;
+      opacity: 1 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Línea decorativa superior -->
+  <div class="linea-superior"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="simulador.html">Simulador</a></li>
+        <li><a href="nombres.html">Generador de Nombres</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Vos lo soñás,<br><span>nosotros lo creamos</span></h1>
+      <a href="simulador.html" class="boton-principal">Simulá tu presupuesto</a>
+      <a href="sorteos.html" class="boton-principal" style="margin-top: 10px;">🎉 Participar del Sorteo</a>
+    </section>
+
+    <!-- FORMULARIO + LOGO -->
+    <section class="contacto">
+      <div class="formulario-logo-wrapper">
+        <div class="logo-contacto-grande">
+          <img src="assets/img/logo_gstream_pequeño.png" alt="Logo GStream Grande" />
+        </div>
+        <div class="formulario-contacto">
+          <h2>¡Contactanos ahora!</h2>
+          <form action="https://formsubmit.co/gstream2319@gmail.com" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+            <input type="email" name="correo" placeholder="Tu correo" required />
+            <input type="text" name="whatsapp" placeholder="Tu WhatsApp" />
+            <textarea name="mensaje" placeholder="Contanos tu idea..." required></textarea>
+
+            <input type="hidden" name="_next" value="https://gstream2025.github.io/gs-web/gracias.html">
+            <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit" class="boton-secundario">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN SABER MÁS -->
+    <section class="seccion-saber-mas">
+      <h2>¿Querés saber más de nosotros?</h2>
+      <button id="mostrarInfoBtn" class="boton-principal">Contame más</button>
+      <div class="info-extra" id="infoExtra" style="display: none; opacity: 0;">
+        <div class="icono-info">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#6c5ce7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8L21 10h-9l1-8z"></path>
+          </svg>
+        </div>
+        <p>
+          Nos dedicamos a materializar las ideas de nuestros clientes.  
+          No somos genios ni tenemos una lámpara mágica, pero sí creemos que cada idea merece ser realidad.  
+          Queremos que cualquiera pueda formar parte de este mundo digital, sin importar su experiencia previa.
+        </p>
+        <p class="firma-info">– El equipo de GStream</p>
+      </div>
+    </section>
+
+    <!-- RESEÑAS -->
+    <section class="resenas">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div id="resenas-container"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="anio-footer"></span> GStream. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- BOTÓN DE WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/59893589404" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <img src="assets/img/whatsapp_icono.png" alt="WhatsApp">
+  </a>
+
+  <!-- BOTÓN DE MODO OSCURO -->
+  <button id="toggleTheme" class="modo-oscuro-btn" title="Cambiar modo oscuro">🌓</button>
+
+  <!-- CHAT FAQ INTERACTIVO -->
+  <div class="faq-chatbot">
+    <button id="botonFaq">❓</button>
+    <div class="faq-container" id="faqContainer">
+      <h3>Preguntas Frecuentes</h3>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <button class="pregunta">¿Cuánto demora un sitio web?</button>
+          <div class="respuesta">Dependiendo del proyecto, entre 3 y 10 días.</div>
+        </li>
+        <li class="faq-item">
+          <button class="pregunta">¿Puedo pedir una tienda online?</button>
+          <div class="respuesta">Sí, hacemos tiendas con carrito y pasarela de pago.</div>
+        </li>
+        <li class="faq-item">
+          <button class="pregunta">¿Aceptan pagos internacionales?</button>
+          <div class="respuesta">Sí, trabajamos con PayPal, MercadoPago, y transferencias.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <!-- SCRIPTS -->
+  <script>
+    // Año automático en footer
+    document.getElementById("anio-footer").textContent = new Date().getFullYear();
+
+    // Mostrar sección "Contame más"
+    const btn = document.getElementById('mostrarInfoBtn');
+    const extra = document.getElementById('infoExtra');
+
+    btn.addEventListener('click', () => {
+      extra.style.display = 'block';
+      setTimeout(() => {
+        extra.classList.add('mostrar');
+      }, 50);
+    });
+  </script>
+
   <script src="assets/js/main.js"></script>
   <script src="assets/js/resenas.js"></script>
   <script src="assets/js/logo.js"></script>
-
-  <!-- NOTIFICACIÓN FLOTANTE DE SORTEO -->
-  <style>
-    .notificacion-sorteo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ffffff;
-      color: #333;
-      border-radius: 16px;
-      padding: 16px 20px;
-      font-size: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      z-index: 1000;
-      max-width: 300px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-      border: 1px solid #eee;
-    }
-
-    .notificacion-sorteo.mostrar {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .notificacion-sorteo-icono {
-      font-size: 22px;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      color: white;
-      padding: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .notificacion-sorteo-texto {
-      flex-grow: 1;
-      cursor: pointer;
-    }
-
-    .notificacion-sorteo-close {
-      background: none;
-      border: none;
-      font-size: 16px;
-      color: #999;
-      cursor: pointer;
-      padding: 0;
-      margin-left: auto;
-    }
-
-    .notificacion-sorteo-close:hover {
-      color: #555;
-    }
-  </style>
-
-  <div class="notificacion-sorteo" id="noti-sorteo">
-    <div class="notificacion-sorteo-icono">🎁</div>
-    <div class="notificacion-sorteo-texto" onclick="window.location.href='sorteos.html'">
-      <strong>¡Sorteo activo!</strong><br>
-      Cada 100 seguidores hay un nuevo ganador 🎉
-    </div>
-    <button class="notificacion-sorteo-close" onclick="cerrarNoti()">✖</button>
-  </div>
-
-  <script>
-    window.addEventListener("load", () => {
-      const noti = document.getElementById("noti-sorteo");
-      setTimeout(() => noti.classList.add("mostrar"), 500);
-      setTimeout(() => cerrarNoti(), 10000);
-    });
-
-    function cerrarNoti() {
-      const noti = document.getElementById("noti-sorteo");
-      noti.classList.remove("mostrar");
-      setTimeout(() => {
-        noti.style.display = "none";
-      }, 600);
-    }
-  </script>
-
 </body>
 </html>
