@@ -1,463 +1,122 @@
-/* RESET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GStream 2025 - Página Principal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="styles.css"> <!-- Tu CSS externo -->
+</head>
+<body>
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #f8fbff, #e9f0f7);
-  color: #222;
-  line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
+  <div class="linea-superior"></div>
 
-/* LINEA SUPERIOR */
-.linea-superior {
-  height: 4px;
-  background: linear-gradient(to right, #00cec9, #6c5ce7);
-}
+  <!-- NAV -->
+  <nav class="nav">
+    <h1>GStream</h1>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#idea">Tu Idea</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+    </ul>
+  </nav>
 
-/* NAV */
-.nav {
-  background-color: white;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  position: relative;
-  z-index: 999;
-}
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <h1>Llevamos tu <span>idea</span> al siguiente nivel 🚀</h1>
+    <a href="#idea" class="boton-principal">Contame tu idea</a>
+  </section>
 
-.nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
+  <!-- SECCIÓN DE IDEA -->
+  <section class="contacto" id="idea">
+    <div class="formulario-logo-wrapper">
+      <div class="formulario-contacto">
+        <h2>Contame tu idea ✨</h2>
+        <form action="https://formsubmit.co/tu-email@example.com" method="POST">
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="text" name="instagram" placeholder="@tuusuario" required>
+          <textarea name="mensaje" rows="4" placeholder="¿Qué idea tenés en mente?" required></textarea>
+          <button class="boton-principal" type="submit">Enviar</button>
+        </form>
+      </div>
+      <div class="logo-contacto-grande">
+        <img src="https://gstream2025.github.io/gs-web/logo.png" alt="Logo GStream">
+      </div>
+    </div>
+  </section>
 
-.nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
+  <!-- SECCIÓN SABER MÁS -->
+  <section class="seccion-saber-mas">
+    <button class="boton-secundario" onclick="toggleInfo()">¿Querés saber más?</button>
+    <div class="info-extra" id="infoExtra">
+      <div class="icono-info">💡</div>
+      <p>En GStream te ayudamos a transformar tus ideas en proyectos reales, desde la conceptualización hasta la implementación. ¡Animate a dar el primer paso!</p>
+      <p class="firma-info">- El equipo de GStream</p>
+    </div>
+  </section>
 
-.nav ul li a:hover {
-  color: #00cec9;
-}
+  <!-- SECCIÓN RESEÑAS -->
+  <section class="resenas" id="resenas">
+    <h2>Lo que dicen quienes ya confiaron ❤️</h2>
+    <div id="resenas-container">
+      <div class="resena">⭐️⭐️⭐️⭐️⭐️ "¡Me ayudaron a lanzar mi app desde cero!"</div>
+      <div class="resena">⭐️⭐️⭐️⭐️⭐️ "Atención increíble y trabajo profesional."</div>
+      <div class="resena">⭐️⭐️⭐️⭐️⭐️ "Rápido, moderno y entendieron mi idea al 100%."</div>
+    </div>
+  </section>
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 GStream. Todos los derechos reservados.
+  </footer>
 
-/* HERO */
-.hero {
-  background: linear-gradient(135deg, #e3f2fd, #f9fafe);
-  padding: 100px 20px;
-  text-align: center;
-}
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/5491112345678" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="https://icongr.am/fontawesome/whatsapp.svg?size=30&color=ffffff" alt="WhatsApp">
+  </a>
 
-.hero h1 {
-  font-size: 3rem;
-  color: #2d3436;
-}
+  <!-- BOTÓN FLOTANTE DE SORTEO -->
+  <a href="sorteo.html" class="boton-sorteo">🎁 Sorteo Activo</a>
 
-.hero h1 span {
-  color: #00b894;
-  font-weight: 600;
-}
+  <!-- BOTÓN FLOTANTE DE NOTIFICACIÓN -->
+  <a href="#resenas" class="boton-noti">¡Cada 100 seguidores hay sorteos!</a>
 
-.boton-principal,
-.boton-secundario {
-  margin-top: 20px;
-  background-color: #00b894;
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
-}
+  <!-- BOTÓN DE MODO OSCURO -->
+  <button class="modo-oscuro-btn" onclick="toggleModoOscuro()">🌓</button>
 
-.boton-principal:hover,
-.boton-secundario:hover {
-  background-color: #019875;
-  box-shadow: 0 6px 16px rgba(0, 184, 148, 0.4);
-}
+  <!-- FAQ CHATBOT -->
+  <div class="faq-chatbot">
+    <button id="botonFaq" onclick="toggleFaq()">❓</button>
+    <div class="faq-container" id="faqContainer">
+      <h3>Preguntas Frecuentes</h3>
+      <button class="pregunta" onclick="toggleRespuesta(this)">¿Cómo participo del sorteo?</button>
+      <div class="respuesta">Solo tenés que seguirnos, mencionar amigos y subir tu captura.</div>
+      <button class="pregunta" onclick="toggleRespuesta(this)">¿Puedo enviar más de una idea?</button>
+      <div class="respuesta">¡Sí! Siempre que sean distintas y originales.</div>
+    </div>
+  </div>
 
-/* CONTACTO */
-.contacto {
-  padding: 60px 20px;
-  background: #ffffff;
-}
+  <!-- JS -->
+  <script>
+    function toggleInfo() {
+      const info = document.getElementById('infoExtra');
+      info.classList.toggle('activa');
+    }
 
-.formulario-logo-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
+    function toggleModoOscuro() {
+      document.body.classList.toggle('modo-oscuro');
+    }
 
-.formulario-contacto {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  max-width: 400px;
-  width: 100%;
-}
+    function toggleFaq() {
+      const faq = document.getElementById('faqContainer');
+      faq.classList.toggle('activo');
+    }
 
-.formulario-contacto h2 {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-  text-align: center;
-}
+    function toggleRespuesta(button) {
+      const respuesta = button.nextElementSibling;
+      respuesta.classList.toggle('visible');
+    }
+  </script>
 
-.formulario-contacto form input,
-.formulario-contacto form textarea {
-  width: 100%;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  resize: vertical;
-}
-
-/* LOGO */
-.logo-contacto-grande img {
-  max-width: 320px;
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.logo-contacto-grande img:hover {
-  transform: scale(1.05);
-}
-
-/* SABER MÁS */
-.seccion-saber-mas {
-  text-align: center;
-  padding: 3em 1em;
-  background-color: #f4f7fc;
-}
-
-.info-extra {
-  display: none;
-  opacity: 0;
-  max-width: 700px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 2em;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  position: relative;
-}
-
-.info-extra.activa {
-  display: block;
-  animation: fadeInUp 0.7s ease forwards;
-  opacity: 1;
-}
-
-.info-extra p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1em;
-  color: #444;
-}
-
-.firma-info {
-  font-weight: bold;
-  color: #5c33a3;
-  margin-top: 1em;
-}
-
-.icono-info {
-  margin-bottom: 1em;
-}
-
-/* WHATSAPP */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  width: 55px;
-  height: 55px;
-  background-color: #25d366;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.whatsapp-float img {
-  width: 30px;
-  height: 30px;
-}
-
-/* RESEÑAS */
-.resenas {
-  padding: 60px 20px;
-  background: #f0f4fa;
-  text-align: center;
-  color: #222;
-}
-
-.resenas h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
-
-#resenas-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-/* FAQ */
-.faq-chatbot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-#botonFaq {
-  background-color: #6c5ce7;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: background 0.3s;
-}
-
-#botonFaq:hover {
-  background-color: #5946d2;
-}
-
-.faq-container {
-  position: absolute;
-  bottom: 70px;
-  right: 0;
-  width: 280px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  padding: 15px;
-  display: none;
-  flex-direction: column;
-  animation: fadeInUp 0.3s ease;
-}
-
-.faq-container.activo {
-  display: flex;
-}
-
-.faq-container h3 {
-  margin-top: 0;
-  font-size: 18px;
-  color: #333;
-  text-align: center;
-  font-weight: 600;
-}
-
-.pregunta {
-  background-color: #f1f1f1;
-  color: #333;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 10px;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.3s;
-}
-
-.pregunta:hover {
-  background-color: #e0e0e0;
-}
-
-.respuesta {
-  display: none;
-  background-color: #fafafa;
-  padding: 8px;
-  border-left: 3px solid #6c5ce7;
-  margin-top: 5px;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #555;
-}
-
-.respuesta.visible {
-  display: block;
-}
-
-/* FOOTER */
-footer {
-  background: #222;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-/* ANIMACIONES */
-@keyframes fadeInUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* MODO OSCURO */
-body.modo-oscuro {
-  background-color: #1e272e;
-  color: #f5f6fa;
-}
-
-body.modo-oscuro .hero {
-  background: #2f3640;
-}
-
-body.modo-oscuro .nav {
-  background-color: #2f3640;
-}
-
-body.modo-oscuro .nav ul li a {
-  color: #dcdde1;
-}
-
-body.modo-oscuro .nav ul li a:hover {
-  color: #70a1ff;
-}
-
-body.modo-oscuro .contacto,
-body.modo-oscuro .formulario-contacto {
-  background-color: #2f3640;
-  color: #f1f2f6;
-}
-
-body.modo-oscuro .resenas {
-  background-color: #353b48;
-  color: #f1f2f6;
-}
-
-body.modo-oscuro .faq-container {
-  background-color: #2f3640;
-  color: #f1f2f6;
-}
-
-body.modo-oscuro footer {
-  background-color: #1e272e;
-}
-
-body.modo-oscuro input,
-body.modo-oscuro textarea {
-  background-color: #3b3b3b;
-  color: #f5f6fa;
-  border: 1px solid #555;
-}
-
-/* BOTÓN MODO OSCURO */
-.modo-oscuro-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 52px;
-  height: 52px;
-  background-color: #333;
-  color: #fff;
-  font-size: 22px;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  cursor: pointer;
-  z-index: 999;
-  transition: background 0.3s ease;
-}
-
-.modo-oscuro-btn:hover {
-  background-color: #555;
-}
-
-/* BOTÓN FLOTANTE DE SORTEO */
-.boton-sorteo {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  z-index: 1000;
-  background: linear-gradient(to right, #00cec9, #6c5ce7);
-  color: white;
-  padding: 14px 20px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.boton-sorteo:hover {
-  background: linear-gradient(to right, #01a3a4, #5e50d6);
-  transform: translateY(-2px);
-}
-
-body.modo-oscuro .boton-sorteo {
-  background: linear-gradient(to right, #0984e3, #6c5ce7);
-  color: white;
-}
-
-/* BOTÓN FLOTANTE DE NOTIFICACIÓN */
-.boton-noti {
-  position: fixed;
-  bottom: 150px;
-  right: 20px;
-  z-index: 1000;
-  background: linear-gradient(to right, #fd79a8, #e84393);
-  color: white;
-  padding: 14px 20px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.boton-noti:hover {
-  background: linear-gradient(to right, #e056fd, #be2edd);
-  transform: translateY(-2px);
-}
-
-body.modo-oscuro .boton-noti {
-  background: linear-gradient(to right, #d63031, #e84393);
-  color: white;
-}
+</body>
+</html>

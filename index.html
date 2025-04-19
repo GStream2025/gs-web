@@ -73,7 +73,15 @@
     <!-- SECCIÓN SABER MÁS -->
     <section class="seccion-saber-mas">
       <h2>¿Querés saber más de nosotros?</h2>
-      <button id="mostrarInfoBtn" class="boton-principal">Contame más</button>
+
+      <!-- Contenedor horizontal con botón y WhatsApp -->
+      <div style="display: flex; align-items: center; gap: 12px; justify-content: center; margin-top: 10px;">
+        <button id="mostrarInfoBtn" class="boton-principal">Contame más</button>
+        <a href="https://wa.me/59893589404" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/whatsapp_icono.png" alt="WhatsApp" style="width: 40px; height: 40px;" />
+        </a>
+      </div>
+
       <div class="info-extra" id="infoExtra" style="display: none; opacity: 0;">
         <div class="icono-info">
           <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#6c5ce7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
