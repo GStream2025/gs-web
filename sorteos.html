@@ -43,6 +43,11 @@
       margin-bottom: 15px;
       color: #fff;
       font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .contador.animado {
+      transform: scale(1.2);
     }
 
     input[type="text"] {
@@ -203,6 +208,10 @@
       onValue(contadorRef, snapshot => {
         const valor = snapshot.val() || 0;
         spanContador.textContent = valor;
+        spanContador.parentElement.classList.add("animado");
+        setTimeout(() => {
+          spanContador.parentElement.classList.remove("animado");
+        }, 400);
       });
 
       // Mostrar lista de participantes
@@ -228,7 +237,14 @@
         mensaje.style.opacity = 1;
 
         const usuario = document.getElementById("usuario").value.trim();
-        if (!usuario) return;
+
+        // Validación
+        if (!usuario.startsWith("@") || usuario.length < 3) {
+          mensaje.textContent = "❌ Ingresá un usuario válido de Instagram (ej: @usuario)";
+          mensaje.style.color = "#ff4f4f";
+          mensaje.style.opacity = 1;
+          return;
+        }
 
         try {
           await runTransaction(contadorRef, actual => (actual || 0) + 1);
