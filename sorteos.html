@@ -75,6 +75,39 @@
       padding: 5px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
+    /* Mensaje de agradecimiento */
+    #mensajeGracias {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #mensajeGracias.activo {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #mensajeGracias .popup {
+      background: white;
+      color: #333;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+    }
+
+    #mensajeGracias.activo .popup {
+      transform: scale(1);
+    }
   </style>
 </head>
 <body>
@@ -100,6 +133,17 @@
     <ul id="lista"></ul>
   </div>
 
+  <!-- Popup de agradecimiento -->
+  <div id="mensajeGracias">
+    <div class="popup">
+      <h2>🎊 ¡Gracias por participar!</h2>
+      <p>Tu participación ha sido registrada.</p>
+    </div>
+  </div>
+
+  <!-- Confetti JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <!-- Firebase Modular CDN -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
@@ -123,6 +167,7 @@
     const input = document.getElementById("usuario");
     const contador = document.getElementById("contador");
     const lista = document.getElementById("lista");
+    const mensajeGracias = document.getElementById("mensajeGracias");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -133,6 +178,17 @@
       push(refUsuarios, { usuario });
 
       input.value = "";
+
+      // Mostrar mensaje y lanzar confeti
+      mensajeGracias.classList.add("activo");
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+      setTimeout(() => {
+        mensajeGracias.classList.remove("activo");
+      }, 3000);
     });
 
     const refUsuarios = ref(db, "participantes");
@@ -142,7 +198,7 @@
       contador.innerText = keys.length;
 
       lista.innerHTML = "";
-      keys.reverse().forEach((key) => {
+      keys.reverse().slice(0, 5).forEach((key) => {
         const usuario = data[key].usuario;
         const li = document.createElement("li");
         li.textContent = usuario;
