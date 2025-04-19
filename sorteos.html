@@ -3,177 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Participar del Sorteo - GStream</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <title>Participá del sorteo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Nunito', sans-serif;
       background: linear-gradient(to right, #6a11cb, #2575fc);
       color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      position: relative;
     }
-
-    .form-container {
-      background: #ffffff10;
-      backdrop-filter: blur(15px);
-      border-radius: 20px;
-      padding: 30px 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      width: 100%;
+    .container {
       max-width: 400px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
       text-align: center;
-      animation: fadeIn 1s ease;
-      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
-
     h1 {
-      font-size: 26px;
+      font-size: 28px;
       margin-bottom: 10px;
     }
-
     .contador {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #fff;
-      font-weight: bold;
+      font-size: 20px;
+      margin: 10px 0;
     }
-
-    input[type="text"] {
+    input {
       width: 100%;
       padding: 12px;
-      margin: 15px 0;
       border: none;
       border-radius: 10px;
+      margin-bottom: 15px;
       font-size: 16px;
     }
-
     button {
-      width: 100%;
-      padding: 12px;
-      background-color: #ffffff;
+      background-color: #fff;
       color: #2575fc;
       border: none;
+      padding: 12px 24px;
       border-radius: 10px;
       font-size: 16px;
-      font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #e0e0e0;
-    }
-
-    .mensaje {
-      margin-top: 15px;
-      font-size: 14px;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .mensaje.exito {
-      color: #00ff9d;
-      opacity: 1;
-    }
-
-    .condiciones {
-      font-size: 12px;
-      color: #eee;
-      margin-top: 20px;
-      line-height: 1.4;
-      text-align: left;
-    }
-
-    .anuncio {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #fff2;
-      padding: 10px 15px;
-      border-radius: 12px;
-      font-size: 12px;
-      color: #fff;
       font-weight: bold;
-      backdrop-filter: blur(10px);
+      transition: background 0.3s;
     }
-
-    .participantes-lista {
-      background: #ffffff15;
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      padding: 20px;
-      max-width: 400px;
-      width: 100%;
-      margin-top: 20px;
+    button:hover {
+      background-color: #f0f0f0;
+    }
+    .requisitos {
       text-align: left;
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-size: 14px;
+      margin-top: 20px;
+      opacity: 0.9;
     }
-
-    .participantes-lista h2 {
-      font-size: 16px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #ffffff30;
-      padding-bottom: 5px;
+    .lista-container {
+      max-width: 400px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
-
-    .participantes-lista ul {
+    ul {
       list-style: none;
       padding: 0;
-      max-height: 200px;
-      overflow-y: auto;
+      margin-top: 10px;
     }
-
-    .participantes-lista li {
-      padding: 4px 0;
-      border-bottom: 1px dashed #ffffff20;
-      font-size: 14px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    li {
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
 <body>
-  <div class="anuncio">📅 ¡Nuevo sorteo cada 100 seguidores!</div>
-
-  <div class="form-container">
+  <div class="container">
     <h1>🎉 Participá del sorteo</h1>
-    <p class="contador">Participantes: <span id="contador">0</span></p>
-    <p>Ingresá tu usuario de Instagram</p>
-    <form id="sorteoForm">
-      <input type="text" name="usuario" id="usuario" placeholder="@ejemplo_instagram" required />
+    <div class="contador">Participantes: <span id="contador">0</span></div>
+    <form id="formulario">
+      <input type="text" id="usuario" placeholder="@ejemplo_instagram" required />
       <button type="submit">Enviar</button>
-      <p class="mensaje" id="mensajeExito"></p>
     </form>
-    <div class="condiciones">
-      <p><strong>Requisitos:</strong></p>
+    <div class="requisitos">
+      <strong>Requisitos:</strong>
       <ul>
-        <li>Seguir nuestra cuenta de Instagram</li>
-        <li>Subir una historia mencionando a @gstreamweb2025</li>
-        <li>Etiquetar a 5 amigos en la publicación del sorteo</li>
+        <li>✅ Seguir nuestra cuenta de Instagram</li>
+        <li>✅ Subir una historia mencionando a @gstreamweb2025</li>
+        <li>✅ Etiquetar a 5 amigos en la publicación del sorteo</li>
       </ul>
     </div>
   </div>
 
-  <div class="participantes-lista">
+  <div class="lista-container">
     <h2>👥 Participantes recientes</h2>
-    <ul id="listaParticipantes"></ul>
+    <ul id="lista"></ul>
   </div>
 
-  <!-- Firebase SDK -->
+  <!-- Firebase Modular CDN -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.1/firebase-app.js";
-    import { getDatabase, ref, onValue, runTransaction, push, get } from "https://www.gstatic.com/firebasejs/11.10.1/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCgNb_WPmo_sbNhOefrsjVEiVDlSX9H7gg",
@@ -187,98 +117,37 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    const contadorRef = ref(database, "contador");
-    const participantesRef = ref(database, "participantes");
+    const db = getDatabase(app);
 
-    const spanContador = document.getElementById("contador");
-    const form = document.getElementById("sorteoForm");
-    const mensaje = document.getElementById("mensajeExito");
-    const lista = document.getElementById("listaParticipantes");
+    const form = document.getElementById("formulario");
+    const input = document.getElementById("usuario");
+    const contador = document.getElementById("contador");
+    const lista = document.getElementById("lista");
 
-    let contadorActual = 0;
-
-    // Animar contador
-    function animarContador(desde, hasta) {
-      const duracion = 600;
-      const start = performance.now();
-      function frame(timestamp) {
-        const progreso = Math.min((timestamp - start) / duracion, 1);
-        const valor = Math.floor(desde + (hasta - desde) * progreso);
-        spanContador.textContent = valor;
-        if (progreso < 1) {
-          requestAnimationFrame(frame);
-        }
-      }
-      requestAnimationFrame(frame);
-    }
-
-    onValue(contadorRef, snapshot => {
-      const nuevoValor = snapshot.val() || 0;
-      animarContador(contadorActual, nuevoValor);
-      contadorActual = nuevoValor;
-    });
-
-    onValue(participantesRef, snapshot => {
-      const data = snapshot.val();
-      lista.innerHTML = "";
-      if (data) {
-        const participantes = Object.values(data).reverse();
-        participantes.forEach(part => {
-          const li = document.createElement("li");
-          li.textContent = `${part.usuario} - ${part.fecha}`;
-          lista.appendChild(li);
-        });
-        lista.scrollTop = 0;
-      }
-    });
-
-    form.addEventListener("submit", async e => {
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      mensaje.textContent = "Enviando...";
-      mensaje.style.color = "#fff";
-      mensaje.style.opacity = 1;
-      mensaje.classList.remove("exito");
+      const usuario = input.value.trim();
+      if (usuario === "") return;
 
-      const usuario = document.getElementById("usuario").value.trim();
+      const refUsuarios = ref(db, "participantes");
+      push(refUsuarios, { usuario });
 
-      if (!usuario.startsWith("@") || usuario.length < 3) {
-        mensaje.textContent = "❌ Ingresá un usuario válido de Instagram (ej: @usuario)";
-        mensaje.style.color = "#ff4f4f";
-        return;
-      }
+      input.value = "";
+    });
 
-      try {
-        const snapshot = await get(participantesRef);
-        const data = snapshot.val() || {};
-        const yaExiste = Object.values(data).some(p => p.usuario === usuario);
+    const refUsuarios = ref(db, "participantes");
+    onValue(refUsuarios, (snapshot) => {
+      const data = snapshot.val();
+      const keys = Object.keys(data || {});
+      contador.innerText = keys.length;
 
-        if (yaExiste) {
-          mensaje.textContent = "⚠️ Ya estás participando.";
-          mensaje.style.color = "#ffaa00";
-          return;
-        }
-
-        await runTransaction(contadorRef, actual => (actual || 0) + 1);
-        await push(participantesRef, {
-          usuario: usuario,
-          fecha: new Date().toLocaleString()
-        });
-
-        form.reset();
-        mensaje.textContent = "¡Gracias por participar! 🎉";
-        mensaje.style.color = "#00ff9d";
-        mensaje.classList.add("exito");
-
-        setTimeout(() => {
-          mensaje.style.opacity = 0;
-        }, 4000);
-
-      } catch (error) {
-        mensaje.textContent = "❌ Error al registrar. Intentá nuevamente.";
-        mensaje.style.color = "#ff4f4f";
-        console.error("Firebase error:", error);
-      }
+      lista.innerHTML = "";
+      keys.reverse().forEach((key) => {
+        const usuario = data[key].usuario;
+        const li = document.createElement("li");
+        li.textContent = usuario;
+        lista.appendChild(li);
+      });
     });
   </script>
 </body>
