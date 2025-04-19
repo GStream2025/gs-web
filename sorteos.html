@@ -43,11 +43,6 @@
       margin-bottom: 15px;
       color: #fff;
       font-weight: bold;
-      transition: transform 0.3s ease;
-    }
-
-    .contador.animado {
-      transform: scale(1.2);
     }
 
     input[type="text"] {
@@ -156,7 +151,7 @@
     <p class="contador">Participantes: <span id="contador">0</span></p>
     <p>Ingresá tu usuario de Instagram</p>
     <form id="sorteoForm">
-      <input type="text" name="usuario" id="usuario" placeholder="@tucuenta" required />
+      <input type="text" name="usuario" id="usuario" placeholder="@ejemplo_instagram" required />
       <button type="submit">Enviar</button>
       <p class="mensaje" id="mensajeExito"></p>
     </form>
@@ -172,107 +167,119 @@
 
   <div class="participantes-lista">
     <h2>👥 Participantes recientes</h2>
-    <ul id="listaParticipantes">
-      <!-- Participantes aparecerán acá -->
-    </ul>
+    <ul id="listaParticipantes"></ul>
   </div>
 
   <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.1/firebase-app.js";
-    import { getDatabase, ref, onValue, runTransaction, push } from "https://www.gstatic.com/firebasejs/11.10.1/firebase-database.js";
+    import { getDatabase, ref, onValue, runTransaction, push, get } from "https://www.gstatic.com/firebasejs/11.10.1/firebase-database.js";
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const firebaseConfig = {
-        apiKey: "AIzaSyBCiMj2ucMRrKE_Y1CRpMpvlbCUxfD4Txg",
-        authDomain: "gstreamsorteo.firebaseapp.com",
-        databaseURL: "https://gstreamsorteo-default-rtdb.firebaseio.com",
-        projectId: "gstreamsorteo",
-        storageBucket: "gstreamsorteo.appspot.com",
-        messagingSenderId: "128194706962",
-        appId: "1:128194706962:web:0111a85025c422da58e2cb",
-        measurementId: "G-B6CEJM4QPC"
-      };
+    const firebaseConfig = {
+      apiKey: "AIzaSyCgNb_WPmo_sbNhOefrsjVEiVDlSX9H7gg",
+      authDomain: "gstreamsorteo.firebaseapp.com",
+      databaseURL: "https://gstreamsorteo-default-rtdb.firebaseio.com",
+      projectId: "gstreamsorteo",
+      storageBucket: "gstreamsorteo.appspot.com",
+      messagingSenderId: "128194706962",
+      appId: "1:128194706962:web:0111a85025c422da58e2cb",
+      measurementId: "G-B6CEJM4QPC"
+    };
 
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
-      const contadorRef = ref(database, "contador");
-      const participantesRef = ref(database, "participantes");
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const contadorRef = ref(database, "contador");
+    const participantesRef = ref(database, "participantes");
 
-      const spanContador = document.getElementById("contador");
-      const form = document.getElementById("sorteoForm");
-      const mensaje = document.getElementById("mensajeExito");
-      const lista = document.getElementById("listaParticipantes");
+    const spanContador = document.getElementById("contador");
+    const form = document.getElementById("sorteoForm");
+    const mensaje = document.getElementById("mensajeExito");
+    const lista = document.getElementById("listaParticipantes");
 
-      // Mostrar contador
-      onValue(contadorRef, snapshot => {
-        const valor = snapshot.val() || 0;
+    let contadorActual = 0;
+
+    // Animación del contador
+    function animarContador(desde, hasta) {
+      const duracion = 600;
+      const start = performance.now();
+      function frame(timestamp) {
+        const progreso = Math.min((timestamp - start) / duracion, 1);
+        const valor = Math.floor(desde + (hasta - desde) * progreso);
         spanContador.textContent = valor;
-        spanContador.parentElement.classList.add("animado");
-        setTimeout(() => {
-          spanContador.parentElement.classList.remove("animado");
-        }, 400);
-      });
-
-      // Mostrar lista de participantes
-      onValue(participantesRef, snapshot => {
-        const data = snapshot.val();
-        lista.innerHTML = "";
-        if (data) {
-          const participantes = Object.values(data).reverse();
-          participantes.forEach(user => {
-            const li = document.createElement("li");
-            li.textContent = user;
-            lista.appendChild(li);
-          });
+        if (progreso < 1) {
+          requestAnimationFrame(frame);
         }
-      });
+      }
+      requestAnimationFrame(frame);
+    }
 
-      // Al enviar formulario
-      form.addEventListener("submit", async e => {
-        e.preventDefault();
-        mensaje.textContent = "Enviando...";
-        mensaje.classList.remove("exito");
-        mensaje.style.color = "#fff";
-        mensaje.style.opacity = 1;
+    onValue(contadorRef, snapshot => {
+      const nuevoValor = snapshot.val() || 0;
+      animarContador(contadorActual, nuevoValor);
+      contadorActual = nuevoValor;
+    });
 
-        const usuario = document.getElementById("usuario").value.trim();
+    // Lista de participantes
+    onValue(participantesRef, snapshot => {
+      const data = snapshot.val();
+      lista.innerHTML = "";
+      if (data) {
+        const participantes = Object.values(data).reverse();
+        participantes.forEach(part => {
+          const li = document.createElement("li");
+          li.textContent = `${part.usuario} - ${part.fecha}`;
+          lista.appendChild(li);
+        });
+        lista.scrollTop = 0;
+      }
+    });
 
-        // Validación
-        if (!usuario.startsWith("@") || usuario.length < 3) {
-          mensaje.textContent = "❌ Ingresá un usuario válido de Instagram (ej: @usuario)";
-          mensaje.style.color = "#ff4f4f";
-          mensaje.style.opacity = 1;
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      mensaje.textContent = "Enviando...";
+      mensaje.style.color = "#fff";
+      mensaje.style.opacity = 1;
+      mensaje.classList.remove("exito");
+
+      const usuario = document.getElementById("usuario").value.trim();
+
+      if (!usuario.startsWith("@") || usuario.length < 3) {
+        mensaje.textContent = "❌ Ingresá un usuario válido de Instagram (ej: @usuario)";
+        mensaje.style.color = "#ff4f4f";
+        return;
+      }
+
+      try {
+        const snapshot = await get(participantesRef);
+        const data = snapshot.val() || {};
+        const yaExiste = Object.values(data).some(p => p.usuario === usuario);
+
+        if (yaExiste) {
+          mensaje.textContent = "⚠️ Ya estás participando.";
+          mensaje.style.color = "#ffaa00";
           return;
         }
 
-        try {
-          await runTransaction(contadorRef, actual => (actual || 0) + 1);
-          await push(participantesRef, usuario);
+        await runTransaction(contadorRef, actual => (actual || 0) + 1);
+        await push(participantesRef, {
+          usuario: usuario,
+          fecha: new Date().toLocaleString()
+        });
 
-          form.reset();
-          mensaje.textContent = "¡Gracias por participar! 🎉";
-          mensaje.classList.add("exito");
-          mensaje.style.color = "#00ff9d";
-          mensaje.style.opacity = 1;
+        form.reset();
+        mensaje.textContent = "¡Gracias por participar! 🎉";
+        mensaje.style.color = "#00ff9d";
+        mensaje.classList.add("exito");
 
-          setTimeout(() => {
-            mensaje.style.opacity = 0;
-          }, 4000);
+        setTimeout(() => {
+          mensaje.style.opacity = 0;
+        }, 4000);
 
-        } catch (error) {
-          mensaje.textContent = "❌ Hubo un error al registrar tu participación. Intentá nuevamente.";
-          mensaje.classList.remove("exito");
-          mensaje.style.color = "#ff4f4f";
-          mensaje.style.opacity = 1;
-
-          console.error("Error en Firebase:", error);
-
-          setTimeout(() => {
-            mensaje.style.opacity = 0;
-          }, 4000);
-        }
-      });
+      } catch (error) {
+        mensaje.textContent = "❌ Error al registrar. Intentá nuevamente.";
+        mensaje.style.color = "#ff4f4f";
+        console.error("Firebase error:", error);
+      }
     });
   </script>
 </body>
